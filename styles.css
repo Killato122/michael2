@@ -1,0 +1,141 @@
+/* styles.css */
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Disporre gli elementi in colonna */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    text-align: center; /* Assicurati che il testo sia centrato */
+}
+
+/* Stili per il messaggio di benvenuto */
+.welcome-message {
+    font-size: 24px; /* Aumenta la dimensione del testo */
+    color: #fcb69f;
+    margin-bottom: 20px;
+}
+
+/* Stili per il contenitore dei messaggi affettuosi */
+#love-messages {
+    font-size: 20px;
+    color: #fcb69f;
+    margin-bottom: 40px; /* Spazio tra i messaggi e il pop-up */
+    font-weight: bold;
+}
+
+/* Stili per il contenitore del pop-up */
+.popup-container {
+    position: relative; /* Necessario per il posizionamento del pop-up */
+    display: inline-block; /* Permette di centrare il pop-up */
+}
+
+/* Stili per il pop-up */
+.popup {
+    background-color: white;
+    border: 2px solid #fcb69f;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+/* Stili per il titolo del pop-up */
+.popup h1 {
+    margin: 0 0 20px 0; /* Spazio sotto il titolo */
+}
+
+/* Contenitore per i pulsanti */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Spazio tra i pulsanti */
+}
+
+/* Stili per i pulsanti */
+.button {
+    padding: 20px 40px; /* Pulsanti più grandi */
+    font-size: 20px; /* Font più grande */
+    cursor: pointer;
+    background-color: #fcb69f;
+    border: 2px solid black; /* Bordi neri più sottili */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transizione per il colore e trasformazione */
+    position: relative; /* Assicurati che i pulsanti siano posizionati relativamente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Leggera ombra per effetto 3D */
+}
+
+.button:hover {
+    background-color: #ff7e5f;
+}
+
+/* Stili per i messaggi affettuosi random */
+@keyframes welcomeAnimation {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loveMessagesAnimation {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.welcome-message {
+    font-size: 24px;
+    color: #fcb69f; /* Colore del testo */
+    text-align: center;
+    margin-bottom: 20px; /* Spazio tra il messaggio e il pop-up */
+    font-weight: bold;
+    position: relative;
+}
+
+.welcome-message::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: #fcb69f; /* Colore della linea sottile */
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.welcome-message span {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #fcb69f; /* Linea del cursore */
+    animation: typing 3s steps(40, end) 1s 1 normal both;
+}
+
+#love-messages {
+    font-size: 20px;
+    color: #333; /* Colore del testo più scuro per contrasto */
+    margin-bottom: 40px; /* Spazio tra i messaggi e il pop-up */
+    font-weight: bold;
+}
+
+/* Media queries per dispositivi mobili */
+@media (max-width: 600px) {
+    .popup {
+        padding: 20px;
+    }
+
+    .button {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+}
