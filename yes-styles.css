@@ -6,6 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    overflow: hidden;
 }
 
 .content {
@@ -14,13 +15,13 @@ body {
     width: 100%;
     margin: 0 auto;
     position: relative; /* Per posizionare i cuori rispetto a questo contenitore */
+    overflow: hidden;
     z-index: 1; /* Assicura che il contenuto sia sopra ai cuori */
 }
 
 .content img {
-    max-width: 100%;
+    max-width: 80%;
     border-radius: 10px;
-    margin-bottom: 20px; /* Spazio tra l'immagine e i messaggi */
 }
 
 @keyframes fall {
@@ -35,44 +36,53 @@ body {
 }
 
 .heart {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 182, 193, 0.8));
-    border-radius: 50%;
+    position: fixed; /* Posizionamento fisso */
+    width: 20px;
+    height: 20px;
+    background-color: red;
     transform: rotate(-45deg);
     animation: fall linear infinite;
+    /* Aggiungi z-index per garantire che i cuori siano sotto al contenuto ma sopra lo sfondo */
     z-index: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .heart::before,
 .heart::after {
     content: '';
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 182, 193, 0.8));
+    width: 20px;
+    height: 20px;
+    background-color: red;
     border-radius: 50%;
 }
 
 .heart::before {
-    top: -15px;
+    top: -10px;
     left: 0;
 }
 
 .heart::after {
     top: 0;
-    left: -15px;
+    left: -10px;
 }
 
 /* Stili per il contenitore dei messaggi affettuosi */
 #love-messages {
-    font-size: 20px;
-    color: #000; /* Colore nero per i messaggi */
+    font-size: 13px; /* Dimensione del font ridotta */
+    color: #000; /* Colore del testo nero */
     font-weight: bold;
-    animation: loveMessagesAnimation 1s ease-in-out;
-    transition: color 0.3s ease-in-out;
+    position: fixed; /* Posizione fissa */
+    bottom: 20px; /* Margine dal fondo */
+    left: 50%; /* Centrato orizzontalmente */
+    transform: translateX(-50%); /* Centra esattamente */
+    background-color: #fff; /* Sfondo bianco */
+    padding: 10px;
+    border: 1px solid #ddd; /* Bordo grigio chiaro */
+    border-radius: 5px; /* Angoli arrotondati */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombra per migliorare la visibilità */
+    z-index: 2; /* Assicura che il messaggio sia sopra agli altri elementi */
+    max-width: 90%; /* Imposta una larghezza massima per evitare l'eccesso */
+    text-align: center; /* Centra il testo */
 }
 
 /* Effetto hover per i messaggi affettuosi */
@@ -88,19 +98,19 @@ body {
 
 #image-slider {
     position: relative;
-    width: 100%;
-    max-width: 600px;
+    width: 80%;
+    max-width: 400px;
     margin: 20px auto;
-    overflow: hidden;
+    overflow: hidden; /* Nasconde le immagini fuori dal contenitore */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: auto; /* Altezza automatica per adattarsi alle immagini */
+    margin-bottom: 40px; /* Spazio inferiore per separare il testo dai messaggi */
 }
 
 .slider-image {
-    width: 80%; /* Riduci la larghezza dell'immagine */
-    max-width: 480px; /* Limite massimo per la larghezza */
+    width: 80%;
     height: auto;
-    margin: 0 auto; /* Centra l'immagine all'interno del contenitore */
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
@@ -109,3 +119,34 @@ body {
     opacity: 1;
 }
 
+/* Stili per il paragrafo con classe .special-message */
+.special-message {
+    margin-top: 20px; /* Spazio sopra il paragrafo */
+}
+
+/* Ottimizzazione per schermi piccoli */
+@media (max-width: 600px) {
+    .content {
+        padding: 10px; /* Aggiungi un po' di padding per schermi più piccoli */
+    }
+
+    #image-slider {
+        width: 100%;
+        max-width: none; /* Rimuovi il limite massimo di larghezza */
+    }
+
+    .slider-image {
+        width: 100%; /* Adatta le immagini alla larghezza del contenitore */
+    }
+
+    #love-messages {
+        font-size: 12px; /* Riduci ulteriormente la dimensione del font per schermi piccoli */
+        bottom: 10px; /* Riduci il margine dal fondo */
+        padding: 8px; /* Riduci il padding */
+    }
+
+    .special-message {
+        font-size: 12px; /* Riduci la dimensione del font per schermi piccoli */
+        margin-top: 15px; /* Riduci lo spazio sopra il paragrafo */
+    }
+}
