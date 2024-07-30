@@ -1,5 +1,3 @@
-/* yes-styles.css */
-
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     display: flex;
@@ -15,49 +13,99 @@ body {
     max-width: 600px;
     width: 100%;
     margin: 0 auto;
+    position: relative; /* Per posizionare i cuori rispetto a questo contenitore */
+    z-index: 1; /* Assicura che il contenuto sia sopra ai cuori */
 }
 
 .content img {
     max-width: 100%;
     border-radius: 10px;
+    margin-bottom: 20px; /* Spazio tra l'immagine e i messaggi */
 }
 
 @keyframes fall {
     0% {
-        transform: translateY(-100px);
+        transform: translateY(-100px) rotate(0deg);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh);
+        transform: translateY(100vh) rotate(360deg);
         opacity: 0;
     }
 }
 
 .heart {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 182, 193, 0.8));
+    border-radius: 50%;
     transform: rotate(-45deg);
     animation: fall linear infinite;
+    z-index: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .heart::before,
 .heart::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 182, 193, 0.8));
     border-radius: 50%;
 }
 
 .heart::before {
-    top: -10px;
+    top: -15px;
     left: 0;
 }
 
 .heart::after {
     top: 0;
-    left: -10px;
+    left: -15px;
 }
+
+/* Stili per il contenitore dei messaggi affettuosi */
+#love-messages {
+    font-size: 20px;
+    color: #000; /* Colore nero per i messaggi */
+    font-weight: bold;
+    animation: loveMessagesAnimation 1s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Effetto hover per i messaggi affettuosi */
+#love-messages:hover {
+    color: #ff7e5f;
+}
+
+/* Animazione per i messaggi affettuosi */
+@keyframes loveMessagesAnimation {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+#image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slider-image {
+    width: 80%; /* Riduci la larghezza dell'immagine */
+    max-width: 480px; /* Limite massimo per la larghezza */
+    height: auto;
+    margin: 0 auto; /* Centra l'immagine all'interno del contenitore */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slider-image.active {
+    opacity: 1;
+}
+
