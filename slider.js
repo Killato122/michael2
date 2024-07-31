@@ -1,17 +1,21 @@
-// slider.js
-
 document.addEventListener("DOMContentLoaded", function() {
     const imageElement = document.getElementById('slider-image');
     const images = [
         "https://raw.githubusercontent.com/Killato122/michael2/main/IMG_8592.jpg",
-        "https://4.bp.blogspot.com/-VYGbN1jdPsU/ViCBCeH09KI/AAAAAAAAAi8/3ktLe6FZ1qI/s1600/Rare%2BPepe.png",
-        "https://b2b.dondi.it/cat/products/1402/01-00-g.jpg?t=1707317040?t=1707317040"
+        "https://raw.githubusercontent.com/Killato122/sito-amore/main/IMG_7903_Original.jpeg",
+        "https://raw.githubusercontent.com/Killato122/sito-amore/main/IMG_8077_Original.jpeg",
+        "https://raw.githubusercontent.com/Killato122/sito-amore/main/IMG_7212.jpeg",
+        "https://raw.githubusercontent.com/Killato122/sito-amore/main/IMG_7067.jpeg"
     ];
     let currentIndex = 0;
 
     function showNextImage() {
+        imageElement.classList.remove('active');
         currentIndex = (currentIndex + 1) % images.length;
         imageElement.src = images[currentIndex];
+        setTimeout(() => {
+            imageElement.classList.add('active');
+        }, 100); // Delay to ensure opacity transition
     }
 
     setInterval(showNextImage, 10000); // Cambia immagine ogni 10 secondi

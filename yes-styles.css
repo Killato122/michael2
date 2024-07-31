@@ -14,35 +14,75 @@ body {
     max-width: 600px;
     width: 100%;
     margin: 0 auto;
-    position: relative; /* Per posizionare i cuori rispetto a questo contenitore */
+    position: relative;
     overflow: hidden;
-    z-index: 1; /* Assicura che il contenuto sia sopra ai cuori */
+    z-index: 1;
 }
 
-.content img {
-    max-width: 80%;
+#image-slider {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    height: 300px;
+    margin: 20px auto;
+    overflow: hidden;
     border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* Colore di sfondo semi-trasparente */
 }
 
-@keyframes fall {
-    0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Adatta l'immagine al contenitore mantenendo le proporzioni */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    border-radius: 20px;
 }
 
+.slider-image.active {
+    opacity: 1;
+}
+
+.special-message {
+    margin-top: 20px;
+}
+
+/* Stili per il contenitore dei messaggi affettuosi */
+#love-messages {
+    font-size: 13px;
+    color: #000;
+    font-weight: bold;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    max-width: 90%;
+    text-align: center;
+}
+
+#love-messages:hover {
+    color: #ff7e5f;
+}
+
+@keyframes loveMessagesAnimation {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Cuori cadenti */
 .heart {
-    position: fixed; /* Posizionamento fisso */
+    position: fixed;
     width: 20px;
     height: 20px;
     background-color: red;
     transform: rotate(-45deg);
     animation: fall linear infinite;
-    /* Aggiungi z-index per garantire che i cuori siano sotto al contenuto ma sopra lo sfondo */
     z-index: 0;
 }
 
@@ -66,87 +106,45 @@ body {
     left: -10px;
 }
 
-/* Stili per il contenitore dei messaggi affettuosi */
-#love-messages {
-    font-size: 13px; /* Dimensione del font ridotta */
-    color: #000; /* Colore del testo nero */
-    font-weight: bold;
-    position: fixed; /* Posizione fissa */
-    bottom: 20px; /* Margine dal fondo */
-    left: 50%; /* Centrato orizzontalmente */
-    transform: translateX(-50%); /* Centra esattamente */
-    background-color: #fff; /* Sfondo bianco */
-    padding: 10px;
-    border: 1px solid #ddd; /* Bordo grigio chiaro */
-    border-radius: 5px; /* Angoli arrotondati */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombra per migliorare la visibilità */
-    z-index: 2; /* Assicura che il messaggio sia sopra agli altri elementi */
-    max-width: 90%; /* Imposta una larghezza massima per evitare l'eccesso */
-    text-align: center; /* Centra il testo */
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
-/* Effetto hover per i messaggi affettuosi */
-#love-messages:hover {
-    color: #ff7e5f;
-}
-
-/* Animazione per i messaggi affettuosi */
-@keyframes loveMessagesAnimation {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-#image-slider {
-    position: relative;
-    width: 80%;
-    max-width: 400px;
-    margin: 20px auto;
-    overflow: hidden; /* Nasconde le immagini fuori dal contenitore */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    height: auto; /* Altezza automatica per adattarsi alle immagini */
-    margin-bottom: 40px; /* Spazio inferiore per separare il testo dai messaggi */
-}
-
-.slider-image {
-    width: 80%;
-    height: auto;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.slider-image.active {
-    opacity: 1;
-}
-
-/* Stili per il paragrafo con classe .special-message */
-.special-message {
-    margin-top: 20px; /* Spazio sopra il paragrafo */
-}
-
-/* Ottimizzazione per schermi piccoli */
 @media (max-width: 600px) {
     .content {
-        padding: 10px; /* Aggiungi un po' di padding per schermi più piccoli */
+        padding: 10px;
     }
 
     #image-slider {
-        width: 100%;
-        max-width: none; /* Rimuovi il limite massimo di larghezza */
+        width: 90%;
+        max-width: none;
+        height: 350px; /* Altezza aumentata per i dispositivi mobili */
+        background-color: rgba(255, 255, 255, 0.1); /* Colore di sfondo ancora più trasparente */
+        
     }
 
     .slider-image {
-        width: 100%; /* Adatta le immagini alla larghezza del contenitore */
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
     }
 
     #love-messages {
-        font-size: 12px; /* Riduci ulteriormente la dimensione del font per schermi piccoli */
-        bottom: 10px; /* Riduci il margine dal fondo */
-        padding: 8px; /* Riduci il padding */
+        font-size: 12px;
+        bottom: 5px;
+        padding: 8px;
+        width: 80%; /* Aumenta la larghezza sui dispositivi mobili */
     }
 
     .special-message {
-        font-size: 12px; /* Riduci la dimensione del font per schermi piccoli */
-        margin-top: 15px; /* Riduci lo spazio sopra il paragrafo */
+        font-size: 12px;
+        margin-top: 15px;
     }
 }
