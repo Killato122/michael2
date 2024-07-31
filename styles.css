@@ -104,3 +104,22 @@ body {
         font-size: 16px;
     }
 }
+
+
+/* Stili per il contenitore della GIF di caricamento */
+.loading {
+    display: none; /* Nascosto di default */
+    position: fixed; /* Posizionamento fisso per coprire l'intera pagina */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+    z-index: 1000; /* Assicurati che sia sopra al resto del contenuto */
+    justify-content: center;
+    align-items: center;
+}
+
+.loading img {
+    max-width: 200px; /* Regola la dimensione della GIF se necessario */
+}

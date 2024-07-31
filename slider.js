@@ -18,5 +18,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 100); // Delay to ensure opacity transition
     }
 
-    setInterval(showNextImage, 10000); // Cambia immagine ogni 10 secondi
+    setInterval(showNextImage, 8000); // Cambia immagine ogni 8 secondi
 });
