@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const imageElement = document.getElementById('slider-image');
     const images = [
-        "https://raw.githubusercontent.com/Killato122/michael2/main/IMG_8592.jpg",
+        "https://raw.githubusercontent.com/Killato122/sito-amore/main/IMG_8592.jpg",
         "https://raw.githubusercontent.com/Killato122/sito-amore/main/IMG_7903_Original.jpeg",
         "https://raw.githubusercontent.com/Killato122/sito-amore/main/IMG_8077_Original.jpeg",
         "https://raw.githubusercontent.com/Killato122/sito-amore/main/IMG_7212.jpeg",

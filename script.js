@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Gestisce il clic sul pulsante "No"
     noButton.addEventListener('click', function() {
         noButton.innerHTML = '😭'; // Sostituisce il testo con l'emoji triste
-        playSound('https://github.com/Killato122/michael2/blob/main/Sad%20Hamster%20Violin%20Meme%20Full.mp3'); // Suona un effetto sonoro triste
+        playSound('https://github.com/Killato122/sito-amore/blob/main/Sad%20Hamster%20Violin%20Meme%20Full.mp3'); // Suona un effetto sonoro triste
     });
 
     // Gestisce il clic sul pulsante "Sì"
